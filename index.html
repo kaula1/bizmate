@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BizMate - Business Management for Kenyan SMEs</title>
+    <meta name="description" content="Complete business management platform for Kenyan SMEs. POS, inventory, customers, analytics, and more. Mobile-first PWA designed for Kenya." />
+    <meta name="author" content="BizMate" />
+    <meta name="keywords" content="business management, Kenya, SME, POS, inventory, point of sale, business analytics" />
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#166534" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="BizMate" />
+    
+    <!-- PWA Icons -->
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/icons/icon-512x512.png" />
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="BizMate - Business Management for Kenyan SMEs" />
+    <meta property="og:description" content="Complete business management platform with POS, inventory, customer management, and analytics designed for Kenyan businesses." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/icons/icon-512x512.png" />
+    <meta property="og:locale" content="en_KE" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="BizMate - Business Management for Kenyan SMEs" />
+    <meta name="twitter:description" content="Complete business management platform designed for Kenyan SMEs" />
+    <meta name="twitter:image" content="/icons/icon-512x512.png" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('SW registered: ', registration);
+            })
+            .catch((registrationError) => {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>
