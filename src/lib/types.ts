@@ -116,3 +116,29 @@ export type OrgCreationData = z.infer<typeof orgCreationSchema>;
 export type ProductFormData = z.infer<typeof productSchema>;
 export type InventoryLevelFormData = z.infer<typeof inventoryLevelSchema>;
 export type StockAdjustmentData = z.infer<typeof stockAdjustmentSchema>;
+
+// Customer types
+export interface Customer {
+  id: string;
+  org_id: string;
+  name: string;
+  phone?: string;
+  email?: string;
+  address?: string;
+  notes?: string;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+// Customer schemas
+export const customerSchema = z.object({
+  name: z.string().min(1, "Customer name is required"),
+  phone: z.string().optional(),
+  email: z.string().email("Please enter a valid email").optional().or(z.literal("")),
+  address: z.string().optional(),
+  notes: z.string().optional(),
+  is_active: z.boolean().default(true),
+});
+
+export type CustomerFormData = z.infer<typeof customerSchema>;
